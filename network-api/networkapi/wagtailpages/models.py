@@ -359,6 +359,31 @@ class Petition(CTA):
         default='Thank you for signing too!',
     )
 
+    donation_modals = models.ForeignKey(
+        'wagtailpages.DonationModals',
+        related_name='+',
+        null=True,
+        blank=True,
+        on_delete=models.CASCADE,
+    )
+
+    def get_donation_modal_json(self):
+        modals = self.donation_modals.all()
+        # This is where we can do server-side A/B testing,
+        # by either sending all modals down the pipe, or
+        # selectively only sending a single one based on
+        # things like geolocation, time of day, etc.
+        modals_json = [m.to_simple_dict() for m in modals]
+        return json.dumps(modals_json)
+
+    panels = [
+        InlinePanel(
+            'donation_modals',
+            label='Donation Modals',
+            max_num=4,
+        )
+    ]
+
     class Meta:
         verbose_name = 'petition snippet'
 
