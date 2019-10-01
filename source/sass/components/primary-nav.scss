@@ -286,6 +286,7 @@
   &.expanded {
     opacity: 1;
     height: 200px;
+    z-index: 11; /* .category-nav header z-index + 1 - do we have a better value that we can use? */
   }
 
   &.faded-in {
