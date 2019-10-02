@@ -41,18 +41,12 @@
 
     {% block org_schema%}{% endblock %}
 
-    {% block additional_head_elements %}{% endblock %}
+    {% block extended_head %}{% endblock %}
   </head>
   <body class="{% block bodyclass %}{% endblock %}" id="view-{% block body_id %}{% endblock %}">
     {% if user.is_authenticated %}
       {% wagtailuserbar 'bottom-left' %}
     {% endif %}
-
-    {% block donate %}
-    <div class="donate-modal-wrapper">
-      <!-- this will be populated by main.js if needed -->
-    </div>
-    {% endblock %}
 
     {% block page_top_content %}{% endblock %}
 
