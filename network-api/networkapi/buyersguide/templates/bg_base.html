@@ -46,7 +46,7 @@
 {% endblock %}
 
 
-{% block additional_head_elements %}
+{% block extended_head %}
   <!-- do we still need this? -->
   <script>
     var modernBrowser = (
@@ -72,13 +72,7 @@
 {% endblock %}
 
 
-{% block donate %}
-  <!-- this is getting removed, but clear it anyway -->
-{% endblock %}
-
-
 {% block body_wrapped %}
-
   {% include "./primary_nav.html" %}
 
   <div class="underneath-screen-overlay">
